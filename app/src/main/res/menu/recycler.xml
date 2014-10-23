@@ -1,0 +1,9 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:tools="http://schemas.android.com/tools"
+      tools:context=".RecyclerActivity">
+    <item
+        xmlns:item="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/action_toggle_grid"
+        android:title="@string/action_toggle_grid"
+        item:showAsAction="never"/>
+</menu>
