@@ -19,14 +19,20 @@ import java.util.List;
 public class RecyclerActivity extends ToolbarActivity {
 
     private static final String MOCK_URL = "http://lorempixel.com/800/400/cats/";
+    private static final String STATE_GRID = "state_grid";
 
     private GridLayoutManager mGridLayoutManager;
     private int mGridSpan = 1;
 
     @Override
-    protected void initialiseView() {
+    protected void onCreate(Bundle savedInstanceState) {
 
-        super.initialiseView();
+        super.onCreate(savedInstanceState);
+
+        if (savedInstanceState != null) {
+
+            mGridSpan = savedInstanceState.getInt(STATE_GRID);
+        }
 
         mGridLayoutManager = new GridLayoutManager(this, mGridSpan);
 
@@ -42,6 +48,14 @@ public class RecyclerActivity extends ToolbarActivity {
                 DetailActivity.startActivity(RecyclerActivity.this, viewModel, imageView);
             }
         }));
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+
+        savedInstanceState.putInt(STATE_GRID, mGridSpan);
+
+        super.onSaveInstanceState(savedInstanceState);
     }
 
     private List<ViewModel> createList() {

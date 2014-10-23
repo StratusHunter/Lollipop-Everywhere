@@ -1,6 +1,5 @@
 package com.stratushunter.lollipopeverywhere.activities;
 
-import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
@@ -20,17 +19,6 @@ public abstract class ToolbarActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        initialiseView();
-    }
-
-    @Override
-    public void onConfigurationChanged(Configuration newConfig) {
-
-        super.onConfigurationChanged(newConfig);
-        initialiseView();
-    }
-
-    protected void initialiseView() {
 
         setContentView(getLayoutRes());
 
