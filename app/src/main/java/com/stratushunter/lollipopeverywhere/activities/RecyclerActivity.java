@@ -21,13 +21,14 @@ public class RecyclerActivity extends ToolbarActivity {
     private static final String MOCK_URL = "http://lorempixel.com/800/400/cats/";
 
     private GridLayoutManager mGridLayoutManager;
+    private int mGridSpan = 1;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void initialiseView() {
 
-        super.onCreate(savedInstanceState);
+        super.initialiseView();
 
-        mGridLayoutManager = new GridLayoutManager(this, 1);
+        mGridLayoutManager = new GridLayoutManager(this, mGridSpan);
 
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true); //To optimize the list if it has fixed size cells
@@ -77,8 +78,8 @@ public class RecyclerActivity extends ToolbarActivity {
 
         if (id == R.id.action_toggle_grid) {
 
-            int spanCount = (mGridLayoutManager.getSpanCount() % 2 == 0) ? 1 : 2;
-            mGridLayoutManager.setSpanCount(spanCount);
+            mGridSpan = (mGridLayoutManager.getSpanCount() % 2 == 0) ? 1 : 2;
+            mGridLayoutManager.setSpanCount(mGridSpan);
             mGridLayoutManager.requestLayout();
 
             return true;
